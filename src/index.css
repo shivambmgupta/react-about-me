@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url(`../../assets/images//background.jpeg);
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --min-container-height: 90vh;
+
+  /* Any child's width cannot be resized below this */
+  --min-width-allowed: 10vw;
+
+  /* Any child's width cannot be resized after this */
+  --max-width-allowed: 80vw;
+
+  /* Any child's height cannot be resized below this */
+  --min-height-allowed: 10vw;
+
+  /* Any child's height cannot be resized after this */
+  --max-height-allowed: 80vh; 
+}
+
+.parent {
+  display: grid;
+
+  /* First column to take 33.33%, the second one to take 66.67% */
+  grid-template-columns: 1fr 2fr;
+
+  /* Each column to take atleast certain of width  */
+  grid-auto-columns: minmax(var(--min-width-allowed), auto); 
+  
+  /* Each column to take atleast 100px of width  */
+  grid-auto-rows: minmax(var(--min-height-allowed), auto);
+
+  /* To cover the whole screen. */
+  min-height: var(--min-container-height);
+
+  /* Sets the gap between the grids */
+  grid-gap: 5px;
+
+  /* Places the grid container 5vh from it's siblings/parent (browser) */
+  margin: 5vh;
+}
+
+.child {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #222333;
+  color: white;
+  /* Makes the component resizeable  */
+  resize: both;
+  overflow: auto;
+  
+  /* To the content in child component in center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Check for width resizing of any child component */
+  min-width: var(--min-width-allowed);
+
+  /* Check for heigh resizing of any child component */
+  min-height: var(--min-height-allowed);
+  max-height: var(--max-height-allowed);
+}
+
+.child-one {
+  grid-column: 1 / 2;
+
+  /* Check for width resizing of any child component */
+  max-width: var(--max-width-allowed);
+
+}
+
+.child-two {
+  grid-column: 2 / 3;
+  
+  /* Check for width resizing of any child component */
+  min-width: var(--min-width-allowed);
+  max-width: var(--max-width-allowed);
+}
+
+.child-three {
+  /* Setting the bottom style all the way to the end. */
+  grid-column: 1 / -1;
+}

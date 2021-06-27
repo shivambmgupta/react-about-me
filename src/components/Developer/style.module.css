@@ -1,0 +1,21 @@
+.stdMargin {
+    margin: 5px
+}
+
+.mainImg {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.icon {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.bottomContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
